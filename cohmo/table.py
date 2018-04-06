@@ -87,7 +87,7 @@ class Table:
             'problem': self.problem,
             'coordinators': self.coordinators,
             'queue': self.queue,
-            'status': self.status,
+            'status': self.status.value,
             'current_coordination_team': self.current_coordination_team,
             'current_coordination_start_time': self.current_coordination_start_time,
             'expected_duration': self.get_expected_duration(),
