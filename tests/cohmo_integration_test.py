@@ -1,9 +1,11 @@
 import os
+import sys
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/..')
 import cohmo
 from cohmo import app
 import unittest
 import tempfile
-from unittest.mock import *
+from mock import *
 import time
 from base64 import b64encode
 from flask import json, jsonify
