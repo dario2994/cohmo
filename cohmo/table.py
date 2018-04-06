@@ -1,5 +1,6 @@
-from cohmo.history import Correction, HistoryManager
 import enum
+
+from cohmo.history import Correction, HistoryManager
 import time
 import shutil
 import json
@@ -35,7 +36,7 @@ class Table:
     # start_time (needed only if status == CORRECTING) # Timestamp in seconds
     def __init__(self, path, history_manager, additional_config):
         self.path = path
-        with open(path, newline='') as table_file:
+        with open(path) as table_file:
             table_as_dict = json.load(table_file)
             self.name = table_as_dict['name']
             self.problem = table_as_dict['problem']
@@ -73,7 +74,7 @@ class Table:
             path = self.path
             # Before modifying the default file a backup is done.
             shutil.copyfile(path, path + '.backup')
-        with open(path, 'w', newline='') as table_file:
+        with open(path, 'w') as table_file:
             table_as_dict = self.to_dict()
             del table_as_dict['expected_duration']
             table_as_dict['status'] = self.status.name

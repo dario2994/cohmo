@@ -41,7 +41,7 @@ class HistoryManager:
         # could have been realized in a previous run.
         self.operations_num = int(time.time())
         try:
-            with open(path, newline='') as history_file:
+            with open(path) as history_file:
                 history_reader = csv.reader(
                     history_file, delimiter=',', quotechar='"')
                 for row in history_reader:
@@ -60,7 +60,7 @@ class HistoryManager:
         if path is None:
             path = self.path
             shutil.copyfile(path, path + '.backup')
-        with open(path, 'w', newline='') as history_file:
+        with open(path, 'w') as history_file:
             history_writer = csv.writer(history_file, delimiter=',',
                                         quotechar='"',
                                         quoting=csv.QUOTE_MINIMAL)
@@ -72,7 +72,7 @@ class HistoryManager:
     # Appends a single correction to a csv file.
     def append_to_file(self, new_correction, path=None):
         if path is None: path = self.path
-        with open(path, 'a', newline='') as history_file:
+        with open(path, 'a') as history_file:
             history_writer = csv.writer(history_file, delimiter=',',
                                         quotechar='"',
                                         quoting=csv.QUOTE_MINIMAL)

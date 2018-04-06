@@ -15,7 +15,7 @@ class ChiefCoordinator:
         self.table_paths = table_paths
         self.history_path = history_path
 
-        with open(teams_path, newline='') as teams_file:
+        with open(teams_path) as teams_file:
             lines = teams_file.readlines()
             assert(len(lines) >= 1)
             self.teams = [team.strip() for team in lines[0].split(',')]
